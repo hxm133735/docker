@@ -1,0 +1,26 @@
+### avl
+yum install docker 
+1.copy文件
+	sh docker/avl/copy.sh 
+2.修改配置文件
+	docker/avl/ptd20g/conf/ptd.nsq_addr.ini
+	192.168.123.1:4150
+3.创建镜像
+    docker build -t avl:1.0 docker/avl/
+4.后台运行
+	docker run -itd avl:1.0 /bin/bash
+
+###	c2
+1.copy文件
+  	sh docker/c2/copy.sh
+2.修改配置文件
+	docker/c2/ptd20g/conf/ptd.nsq_addr.ini
+3.创建镜像
+    docker build -t c2:1.0 docker/c2/
+4.后台运行镜像
+	docker run -itd c2:1.0 /bin/bash
+
+
+
+###防火墙
+iptables -F
