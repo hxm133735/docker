@@ -1,0 +1,22 @@
+### avl
+yum install docker 
+在docker 所在目录执行以下命令
+1.copy avl文件与Dockerfile同级
+	sh docker/avl/copy.sh 
+2.创建镜像
+    docker build -t avl:1.0 docker/avl/
+3.后台运行 设置环境变量 设置外部挂载
+	docker run -itd --name avl -e ENV_nsq=192.168.123.1:4150 -v /dev/shm -v /opt/ptd20g/bin/nsq avl:1.0 /opt/env.sh
+	###需要修改的ip放入上面命令中
+4.修改配置文件
+	docker exec -it avl /bin/sh /opt/env.sh
+###	c2
+1.copy c2文件与Dockerfile同级
+  	sh docker/c2/copy.sh
+2.创建镜像
+    docker build -t c2:1.0 docker/c2/
+3.后台运行 设置环境变量 设置外部挂载
+	docker run -itd --name c2 -e ENV_nsq=192.168.123.1:4150 c2:1.0 /bin/bash
+	###需要修改的ip放入上面命令中
+4.修改配置文件
+	docker exec -it c2 /bin/sh /opt/env.sh
